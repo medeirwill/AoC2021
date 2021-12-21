@@ -2,12 +2,11 @@ class CaveFloorPoint:
     def __init__(self,height, leftNeighbour, upNeighbour):
         self.height = height
         self.risky = True
-        self.lowFrom = dict()
         self.risky = self.risky and (leftNeighbour is None or leftNeighbour.height > self.height)
         self.risky = self.risky and (upNeighbour is None or upNeighbour.height > self.height)
         if leftNeighbour is not None:
             leftNeighbour.risky = leftNeighbour.risky and (leftNeighbour.height < self.height)
-        if upNeighbour is not None and upNeighbour.risky: 
+        if upNeighbour is not None: 
             upNeighbour.risky = upNeighbour.risky and (upNeighbour.height < self.height)
 
 with open("input.txt", "r") as caveFloorFile:
